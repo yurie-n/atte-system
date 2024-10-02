@@ -17,7 +17,7 @@ class CreateRestsTable extends Migration
             $table->id()->unique();
             $table->foreignId('attendance_id')->constrained()->cascadeOnDelete();
             $table->time('break_started_at');
-            $table->time('break_ended_at');
+            $table->time('break_ended_at')->nullable();
             $table->timestamps();
         });
     }
