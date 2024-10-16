@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\RestController;
+use App\Http\Controllers\ListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,7 @@ Route::middleware('auth')->group(function () {
     
     Route::post('/rest', [RestController::class, 'store']);
     Route::patch('/rest/update', [RestController::class, 'update']);
+
+    Route::get('/list', [ListController::class, 'index']);
 });
 
