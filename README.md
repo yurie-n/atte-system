@@ -28,7 +28,7 @@ Laravel環境構築<br>
 ・MySQL 8.0<br>
 
 ■ER図<br>
-index.drawio.png<br>
+![draw_io](https://github.com/user-attachments/assets/06515e16-0cdb-44f2-a8f8-86cec1d4438b)
 
 ■URL<br>
 ・開発環境:http://localhost/<br>
