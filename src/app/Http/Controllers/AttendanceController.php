@@ -29,13 +29,13 @@ class AttendanceController extends Controller
         ->get()
         ->last();
 
-        if($prev_attendance->work_date == $today){
+        if(!is_null($prev_attendance) && $prev_attendance->work_date == $today){
             // 本日分の打刻あり
             echo "本日の出勤は打刻済みです。";
         }
         else{
             // 前回の打刻が今日より前(出勤打刻なし)
-            if(is_null($prev_attendance->work_ended_at)){
+            if(!is_null($prev_attendance) && is_null($prev_attendance->work_ended_at)){
                 // かつ前回退勤未打刻の場合は23:59:59で退勤打刻
                 Attendance::whereUserId($id)
                 ->get()
@@ -62,13 +62,13 @@ class AttendanceController extends Controller
         ->get()
         ->last();
 
-        if($prev_attendance->work_date == $today){
+        if(!is_null($prev_attendance) && $prev_attendance->work_date == $today){
             // 本日分の打刻あり
-            if(is_null($prev_attendance->work_started_at)){
+            if(!is_null($prev_attendance) && is_null($prev_attendance->work_started_at)){
                 // 出勤打刻がNULL
                 echo "本日の出勤が未打刻です。";
             }
-            else if(!is_null($prev_attendance->work_ended_at)){
+            else if(!is_null($prev_attendance) && !is_null($prev_attendance->work_ended_at)){
                 // 本日の退勤打刻済み
                 echo "本日の退勤は打刻済みです。";
             }
