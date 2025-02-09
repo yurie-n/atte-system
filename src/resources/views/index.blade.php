@@ -15,12 +15,12 @@
   <div class="attendance__panel">
     <form class="attendance__button" action="/attendance" method="post">
       @csrf
-      <button class="attendance__button-submit" type="submit">勤務開始</button>
+      <button class="attendance__button-submit" type="submit" id="attendance_start">勤務開始</button>
     </form>
     <form class="attendance__button" action="/attendance/update" method="post">
       @method('PATCH')
       @csrf
-      <button class="attendance__button-submit" type="submit">勤務終了</button>
+      <button class="attendance__button-submit" type="submit" id="attendance_end">勤務終了</button>
     </form>
   </div>
   <br>
@@ -36,4 +36,6 @@
     </form>
   </div>
 </div>
+<script>
+</script>
 @endsection

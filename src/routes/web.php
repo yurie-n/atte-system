@@ -25,5 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/rest/update', [RestController::class, 'update']);
 
     Route::get('/list', [ListController::class, 'index']);
+    Route::get('/list/prev', [ListController::class, 'get_prev']);
+    Route::get('/list/next', [ListController::class, 'get_next']);
 });
 

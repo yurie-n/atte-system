@@ -22,18 +22,16 @@
           <ul class="header-nav">
             @if (Auth::check())
             <li class="header-nav__item">
-              <a class="header-nav__link" href="/mypage">ホーム</a>
+              <a class="header-nav__link" href="/">ホーム</a>
             </li>
             <li class="header-nav__item">
-              <a class="header-nav__link" href="/mypage">日付一覧</a>
+              <a class="header-nav__link" href="/list">日付一覧</a>
             </li>
-
             <li class="header-nav__item">
               <form class="form" action="/logout" method="post">
                 @csrf
                 <button class="header-nav__button">ログアウト</button>
               </form>
-            </li>
             @endif
           </ul>
         </nav>
@@ -45,5 +43,4 @@
     @yield('content')
   </main>
 </body>
-
 </html>

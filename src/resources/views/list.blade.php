@@ -5,11 +5,17 @@
 
 @section('content')
 <div class="attendance__date__content">
-  <button class="previous__day__button-submit" type="submit">＜</button>
+  <form class="previous__day__button" action="/list/prev" method="get">
+    @csrf
+    <button class="previous__day__button-submit" type="submit">＜</button>
+  </form>
   <p>
-    {{now()->format('Y-m-d') }}
+    {{$_SESSION['current_date']->format('Y-m-d') }}
   </p>
-  <button class="next__day__button-submit" type="submit">＞</button>
+  <form class="next__day__button" action="/list/next" method="get">
+    @csrf
+    <button class="next__day__button-submit" type="submit">＞</button>
+  </form>
 </div>
 
 <div class="attendance__alert">
@@ -42,18 +48,20 @@
       @foreach ($attendance as $datas)
       <tr class="attendance-table__row">
         <td class="list-table__item">
-          <div class="list-table__item">{{ $datas['user_id'] }}</div></td>
+          <div class="list-table__item">{{ $datas->name }}</div></td>
         <td class="list-table__item">
-          <div class="list-table__item">{{ $datas['work_started_at'] }}</div></td>
+          <div class="list-table__item">{{ $datas->work_start_time }}</div></td>
         <td class="list-table__item">
-          <div class="list-table__item">{{ $datas['work_ended_at'] }}</div></td>
+          <div class="list-table__item">{{ $datas->work_end_time }}</div></td>
         <td class="list-table__item">
-          <div class="list-table__item">休憩時間</div></td>
+          <div class="list-table__item">{{ $datas->total_rest_time }}</div></td>
         <td class="list-table__item">
-          <div class="list-table__item">勤務時間</div></td>
+          <div class="list-table__item">{{ $worktimes[$loop->index] }}</div></td>
       </tr>
       @endforeach
     </table>
   </div>
 </div>
+<script>
+</script>
 @endsection
